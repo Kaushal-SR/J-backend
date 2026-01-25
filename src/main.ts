@@ -16,8 +16,8 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:5173',
-      process.env.FRONTEND_URL, // https://japanese-frontend-iota.vercel.app
-    ].filter(Boolean),
+      'https://nihongospace.vercel.app', // <-- your deployed frontend URL
+    ],
     credentials: true,
   });
 
