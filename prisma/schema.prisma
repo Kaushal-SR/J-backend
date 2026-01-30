@@ -89,3 +89,21 @@ enum ProgressType {
   KANJI
   VOCAB
 }
+
+/// *
+///  * Kanji characters (JLPT based)
+model Kanji {
+  id           String   @id @default(uuid())
+  character    String   @unique
+  meaning      String
+  onyomi       String[]
+  kunyomi      String[]
+  strokes      Int
+  jlptLevel    String
+  radicals     String[]
+  status       String?
+  reviewCount  Int?
+  isBookmarked Boolean  @default(false)
+  examples     Json?
+  createdAt    DateTime @default(now())
+}

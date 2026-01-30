@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { KatakanaModule } from './katakana/katakana.module';
 import { UserProgressModule } from './user-progress/user-progress.module';
 import { VocabularyController } from './vocabulary.controller';
+import { KanjiController } from './kanji.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { VocabularyController } from './vocabulary.controller';
     KatakanaModule,
     UserProgressModule
   ],
-  controllers: [AppController, VocabularyController],
+  controllers: [AppController, VocabularyController, KanjiController],
   providers: [AppService],
 })
 export class AppModule {}
