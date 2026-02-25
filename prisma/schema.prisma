@@ -58,7 +58,6 @@ model UserProgress {
   quizScore  Int?
   updatedAt  DateTime     @updatedAt
   user       User         @relation(fields: [userId], references: [id])
-  vocabulary Vocabulary?  @relation("UserProgressToVocabulary", fields: [itemId], references: [id])
 
   @@unique([userId, itemId, itemType])
 }
@@ -69,14 +68,13 @@ model Vocabulary {
   id        String   @id @default(uuid())
   word      String
   meaning   String
-  furigana  String?
+  furigana  String
   romaji    String?
   level     Int
   description String?
   createdAt DateTime @default(now())
-  userProgresses UserProgress[] @relation("UserProgressToVocabulary")
 
-  @@unique([word, level])
+  @@unique([word, furigana])
 }
 
 enum Role {
