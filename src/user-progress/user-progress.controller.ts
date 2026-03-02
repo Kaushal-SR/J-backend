@@ -10,8 +10,12 @@ export class UserProgressController {
 
   @Post('learned')
   async markLearned(
-    @Body() body: { itemId: string; itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB' },
-    @Req() req: any
+    @Body()
+    body: {
+      itemId: string;
+      itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB';
+    },
+    @Req() req: any,
   ) {
     const userId = req.user?.sub;
     if (!userId) throw new Error('User ID not found in request.');
@@ -20,8 +24,12 @@ export class UserProgressController {
 
   @Post('not-learned')
   async markNotLearned(
-    @Body() body: { itemId: string; itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB' },
-    @Req() req: any
+    @Body()
+    body: {
+      itemId: string;
+      itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB';
+    },
+    @Req() req: any,
   ) {
     const userId = req.user?.sub;
     if (!userId) throw new Error('User ID not found in request.');
@@ -30,8 +38,13 @@ export class UserProgressController {
 
   @Post('bookmark')
   async bookmark(
-    @Body() body: { itemId: string; itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB'; value: boolean },
-    @Req() req: any
+    @Body()
+    body: {
+      itemId: string;
+      itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB';
+      value: boolean;
+    },
+    @Req() req: any,
   ) {
     const userId = req.user?.sub;
     if (!userId) throw new Error('User ID not found in request.');

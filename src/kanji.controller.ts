@@ -15,12 +15,19 @@ export class KanjiController {
     const where: any = {};
     if (jlptLevel) where.jlptLevel = jlptLevel;
     if (search) where.character = { contains: search };
-    const kanji = await this.prisma.kanji.findMany({
+    const queryOptions: any = {
       where,
-      skip: skip ? parseInt(skip) : 0,
-      take: take ? parseInt(take) : 100,
       orderBy: { character: 'asc' },
-    });
+    };
+
+    if (skip) {
+      queryOptions.skip = parseInt(skip);
+    }
+    if (take) {
+      queryOptions.take = parseInt(take);
+    }
+
+    const kanji = await this.prisma.kanji.findMany(queryOptions);
     return kanji;
   }
 }

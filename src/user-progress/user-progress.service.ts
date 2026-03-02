@@ -10,7 +10,7 @@ export class UserProgressService {
   async markLearned(
     userId: string,
     itemId: string,
-    itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB',
+    itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB',
   ) {
     console.log('markLearned called with:', { userId, itemId, itemType });
     if (!userId) throw new Error('userId is required');
@@ -30,7 +30,7 @@ export class UserProgressService {
   async markNotLearned(
     userId: string,
     itemId: string,
-    itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB',
+    itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB',
   ) {
     if (!userId) throw new Error('userId is required');
     return this.prisma.userProgress.upsert({
@@ -49,7 +49,7 @@ export class UserProgressService {
   async setBookmark(
     userId: string,
     itemId: string,
-    itemType: 'HIRAGANA' | 'KATAKANA' | 'VOCAB',
+    itemType: 'HIRAGANA' | 'KATAKANA' | 'KANJI' | 'VOCAB',
     value: boolean,
   ) {
     if (!userId) throw new Error('userId is required');
