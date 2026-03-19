@@ -8,6 +8,7 @@ import { HiraganaModule } from './hiragana/hiragana.module';
 import { AuthModule } from './auth/auth.module';
 import { KatakanaModule } from './katakana/katakana.module';
 import { UserProgressModule } from './user-progress/user-progress.module';
+import { GrammarModule } from './grammar/grammar.module';
 import { VocabularyController } from './vocabulary.controller';
 import { KanjiController } from './kanji.controller';
 
@@ -18,9 +19,10 @@ import { KanjiController } from './kanji.controller';
     }),
     PrismaModule,
     AuthModule,
-     HiraganaModule,
+    HiraganaModule,
     KatakanaModule,
-    UserProgressModule
+    UserProgressModule,
+    GrammarModule,
   ],
   controllers: [AppController, VocabularyController, KanjiController],
   providers: [AppService],

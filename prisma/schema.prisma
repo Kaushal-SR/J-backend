@@ -87,6 +87,7 @@ enum ProgressType {
   KATAKANA
   KANJI
   VOCAB
+  GRAMMAR
 }
 
 /// *
@@ -105,4 +106,26 @@ model Kanji {
   isBookmarked Boolean  @default(false)
   examples     Json?
   createdAt    DateTime @default(now())
+}
+
+/// *
+///  * Grammar points (JLPT based)
+model Grammar {
+  id             String   @id @default(uuid())
+  grammarPoint   String   // Name of the grammar point (e.g., 〜なければならない)
+  reading        String?  // Reading of the grammar point
+  jlptLevel      String   // e.g., "N3", "N4", "N5", "N4_N5"
+  structure      String?  // Typical sentence pattern / formation
+  meaning        String   // Short English meaning
+  nuance         String?  // Nuance / notes
+  formality      String?  // Formality level (Polite, Neutral, Casual, etc.)
+  category       String?  // Semantic category (Time, Condition, etc.)
+  similarGrammar String?  // Similar grammar patterns
+  attachesTo     String?  // What this grammar attaches to
+  examples       Json?    // Example sentences and readings
+  familiarity    Int?     // Familiarity (1-5)
+  status         String?  // Custom status / learning status
+  lastReviewed   DateTime?
+  personalNotes  String?
+  createdAt      DateTime @default(now())
 }
